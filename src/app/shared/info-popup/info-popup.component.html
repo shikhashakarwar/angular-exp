@@ -1,0 +1,6 @@
+<h3 mat-dialog-title>{{data.title}}</h3>
+<div mat-dialog-content [innerHtml]="data.description"></div>
+
+<div mat-dialog-actions>
+  <button mat-button  mat-dialog-close (click)="onClose()" color="none">Close</button>
+</div>

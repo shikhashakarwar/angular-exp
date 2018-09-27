@@ -1,0 +1,24 @@
+<form class="sign-up-form" #signUpForm="ngForm" (ngSubmit)="signUp()">
+        <label class="title">Sign up yourself</label>
+        <mat-form-field class="input-full">
+        <input matInput [(ngModel)]="signUpUser.firstName" placeholder="First name" name="firstName" #firstName="ngModel" [ngClass]="{'input-error': firstName.invalid && (firstName.dirty || firstName.touched)}" required>
+        </mat-form-field>
+
+        <mat-form-field class="input-full">
+                <input matInput [(ngModel)]="signUpUser.lastName" placeholder="Last name" name="lastName" #lastName="ngModel" [ngClass]="{'input-error': lastName.invalid && (lastName.dirty || lastName.touched)}" required/>
+        </mat-form-field>
+
+        <mat-form-field class="input-full">
+                <input matInput [(ngModel)]="signUpUser.email" placeholder="Enter email" name="signUpEmail" #signUpEmail="ngModel" required email [ngClass]="{'input-error': (signUpEmail.invalid || (signUpEmail.errors && signUpEmail.errors.email)) && (signUpEmail.dirty || signUpEmail.touched)}"/>
+        </mat-form-field>
+
+        <mat-form-field class="input-full">
+                <input matInput [type]="'password'" [(ngModel)]="signUpUser.password" placeholder="Enter password" name="password" #signUpPassword="ngModel" required minlength="4"/>
+        </mat-form-field>
+        <mat-error *ngIf="signUpPassword.invalid && (signUpPassword.dirty || signUpPassword.touched)">
+                <span class="error">minimum 4 digits are required.</span>
+        </mat-error>
+        <div class="has-error"><span *ngIf="showError">Email id already exists. Please try diffrent one.</span></div>
+        <button mat-raised-button color="primary" [type]="submit" [disabled]="!signUpForm.form.valid">Sign Up</button>
+</form>
+      

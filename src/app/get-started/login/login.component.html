@@ -1,0 +1,12 @@
+<form class="login-form" (ngSubmit)="signIn()" #signInForm="ngForm">
+    <label class="title">Login to Portal</label>
+    <mat-form-field class="input-full">
+        <input matInput [(ngModel)]="user.email" placeholder="Enter Email" name="uEmail" #loginEmail="ngModel" required email [ngClass]="{'input-error': (loginEmail.invalid || (loginEmail.errors && loginEmail.errors.email)) && (loginEmail.dirty || loginEmail.touched)}"/>
+    </mat-form-field>
+
+    <mat-form-field class="input-full">
+            <input matInput [type]="'password'" [(ngModel)]="user.password" placeholder="Enter Password" name="uPassword" #loginPassword="ngModel" minlength="4" [ngClass]="{'input-error': loginPassword.invalid && (loginPassword.dirty || loginPassword.touched)}" required/>
+    </mat-form-field>
+    <div class="has-error"><span *ngIf="showError">Invalid username or password</span></div>
+    <button mat-raised-button color="primary" [type]="submit" [disabled]="!signInForm.form.valid">Sign In</button>
+</form>

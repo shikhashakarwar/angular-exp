@@ -1,0 +1,22 @@
+.login-form {
+    float: left;    
+    width: 37%;
+    margin-top: 30px;
+
+    .title {
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    .input-full {
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+    .login-form {
+        clear: both;
+        width: auto;
+        margin-right: 0; 
+     }
+}

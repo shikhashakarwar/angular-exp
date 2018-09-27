@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.has-error {
+    color: red;
+    min-height: 30px;
+    padding-bottom: 10px;
+}
