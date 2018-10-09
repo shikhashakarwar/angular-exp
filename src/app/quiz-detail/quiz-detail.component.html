@@ -2,18 +2,24 @@
     <div class="instruction">
         Some instruction regarding quiz:
         <ul>
-          <li>Total questions are 10</li>
-          <li>You can see number plette to your left side</li>
+          <li>Total questions are {{totalQuestions}}</li>
+          <li>You can see number plette to your right side</li>
           <li>Answered questions have green color</li>
-          <li>Saved for remark question have purpel color</li>
+          <li>Saved for read later questions have purpel color</li>
         </ul>
     </div>  
     <div class="row">
         <div class="col-8">
-            <question-section></question-section>
+            <mat-tab-group (selectedTabChange)="onTabChange($event)" dynamicHeight>
+                <mat-tab *ngFor="let questions of questionsByCategory trackBy $index" label="{{questions.catName}}">
+                    <ng-template matTabContent>
+                        <question-section (saveAndNext)="onSaveAndNextClick($event)" [displayQuestion]="displayQuestion" (markReview)="onMarkReviewClick($event)"></question-section>
+                    </ng-template>
+                </mat-tab>
+            </mat-tab-group>
         </div>
         <div class="col">
-          <number-plate></number-plate>  
+          <number-plate [questionsByCategory]="someValue">></number-plate>  
         </div>
     </div>
 </div>

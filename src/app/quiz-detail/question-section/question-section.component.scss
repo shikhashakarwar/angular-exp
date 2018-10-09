@@ -1,0 +1,26 @@
+.question-wrapper {
+    padding: 20px;
+    font-size: 14px;
+
+    .question-area {
+        padding-bottom: 20px;
+
+        .question {
+            font-size: 16px;
+            padding-bottom: 10px;
+        }
+        .choice {
+            display: block;
+        }
+    }
+    .actions {
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        
+        button {
+            margin-left: 20px;
+        }
+    }
+    
+}

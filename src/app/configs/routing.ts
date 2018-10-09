@@ -10,8 +10,8 @@ export const APP_ROUTES:Routes = [
     {path: "getStarted", component: GetStartedComponent},
     {path: "dashboard", component: DashboardComponent, canActivate: [routeGuardService]},
     {path: "logout", component: LogoutComponent},
-    {path: "quiz", component: QuizComponent},
-    {path: "quiz-detail", component: QuizDetailComponent},
+    {path: "quiz", component: QuizComponent , canActivate: [routeGuardService]},
+    {path: "quiz-detail", component: QuizDetailComponent , canActivate: [routeGuardService]},
     {path: "**", redirectTo: "getStarted"},
     {path: "", redirectTo: "getStarted", pathMatch: "full"}
 ];

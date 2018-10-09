@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InfoPopupComponent } from "../shared/info-popup/info-popup.component";
 import { MatDialog } from "@angular/material";
 import { Router, ActivatedRoute } from '@angular/router';
+import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-quiz',
@@ -11,14 +12,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class QuizComponent implements OnInit {
   quizId: number = 1;
 
-  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
+  constructor(private dialog: MatDialog, private router: Router, private route: ActivatedRoute, private QuizService: QuizService) { }
 
   ngOnInit() {
     let _this = this;
     _this.route.queryParams.subscribe((params) => {
       _this.quizId = params['id'] ? params['id']: _this.quizId;
-      console.log(_this.quizId);
-      
     });
   }
 
