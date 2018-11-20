@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-8">
             <mat-tab-group (selectedTabChange)="onTabChange($event)" dynamicHeight>
-                <mat-tab *ngFor="let questions of questionsByCategory trackBy $index" label="{{questions.catName}}">
+                <mat-tab *ngFor="let questions of questionsByCategory " label="{{questions.catName}}">
                     <ng-template matTabContent>
                         <question-section (saveAndNext)="onSaveAndNextClick($event)" [displayQuestion]="displayQuestion" (markReview)="onMarkReviewClick($event)"></question-section>
                     </ng-template>
