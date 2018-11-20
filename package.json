@@ -4,8 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "postinstall": "ng build --prod"
+    "serve:ssr": "node dist/server",
+    "build:client-and-server-bundles": "ng build --prod && ng run quiz-web:server",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
