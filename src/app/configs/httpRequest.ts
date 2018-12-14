@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpRequests {
@@ -12,10 +12,10 @@ export class HttpRequests {
     }
 
     public request(request) {
-        if(this.authToken) {
+        if (this.authToken) {
             const reqHeader = request.clone(
                 {headers: request.headers.set('Authorization', this.authToken)});
-                reqHeader.headers.set('Content-Type', "Application/json");
+                reqHeader.headers.set('Content-Type', 'Application/json');
             return reqHeader;
         } else {
             return request;
@@ -23,12 +23,12 @@ export class HttpRequests {
     }
 
     public responseError(error) {
-        if(error && error.status === 401) {
-            console.log("Unauthorized request in HttRequest");
+        if (error && error.status === 401) {
+            console.log('Unauthorized request in HttRequest');
             this.router.navigate(['./logout']);
             return;
         }
-        console.log("Response error");
+        console.log('Response error');
         console.log(error);
     }
 }

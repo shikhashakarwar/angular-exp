@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { qLocalForage } from "../../services/quizStorage.service";
+import { QuizLocalForage } from '../../services/quizStorage.service';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +9,12 @@ import { qLocalForage } from "../../services/quizStorage.service";
 export class HeaderComponent implements OnInit {
   isLoggedInUser: Boolean = false;
 
-  constructor(private localForage: qLocalForage) { }
+  constructor(private localForage: QuizLocalForage) { }
 
   ngOnInit() {
-    let _this = this;
+    const _this = this;
     _this.localForage.getItem('user').then(function (values: any) {
-        if(values && values.token) {
+        if (values && values.token) {
           _this.isLoggedInUser = true;
         }
     });

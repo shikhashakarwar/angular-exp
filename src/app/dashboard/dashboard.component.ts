@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../services/user.service";
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { qLocalForage } from "../services/quizStorage.service";
+import { QuizLocalForage } from '../services/quizStorage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,19 +10,16 @@ import { qLocalForage } from "../services/quizStorage.service";
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private UserService: UserService, private router: Router, private qLocalForage: qLocalForage) { }
+  constructor(private userService: UserService, private router: Router, private QuizLocalForageService: QuizLocalForage) { }
 
   ngOnInit() {
-    console.log("we are on dashboard");
-    var _this = this;
-    _this.qLocalForage.getItem('user').then(function (values:any) {
-      _this.UserService.getUserInfo({email: values.email}).subscribe((data) => {
-        console.log("user service response success");
-        console.log(data);
-      }, (error) =>{
-        console.log("user service response error");
+    const _this = this;
+    _this.QuizLocalForageService.getItem('user').then(function (values: any) {
+      _this.userService.getUserInfo({email: values.email}).subscribe((data) => {
+
+      }, (error) => {
         console.log(error);
-      })
-    })
+      });
+    });
   }
 }

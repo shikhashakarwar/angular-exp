@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
-import { qLocalForage } from "../services/quizStorage.service";
+import { QuizLocalForage } from "../services/quizStorage.service";
 
 @Injectable() 
 export class routeGuardService implements CanActivate {
 
-    constructor(private localForage: qLocalForage, private router: Router) {}
+    constructor(private localForage: QuizLocalForage, private router: Router) {}
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
         let _this = this;

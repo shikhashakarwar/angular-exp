@@ -1,20 +1,28 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IQuestions } from 'src/app/models/questions';
 
 @Component({
-  selector: 'number-plate',
+  selector: 'app-number-plate',
   templateUrl: './number-plate.component.html',
   styleUrls: ['./number-plate.component.scss']
 })
 export class NumberPlateComponent implements OnInit {
-  @Input('questionsByCategory') questions;
-  
+  @Input() questionsByCategory;
+  @Input() displayQuestion: IQuestions;
+  @Output() navigateQues = new  EventEmitter();
+  totalQuestions = 0;
+  currentCatQuestions = [];
+
   constructor() { }
 
   ngOnInit() {
-    this.questions.subscribe((data) => {
-      console.log(data);
-      
-    })
-    
+    this.questionsByCategory.subscribe((data: Array<object>) => {
+      this.currentCatQuestions = data;
+      this.totalQuestions = data.length;
+    });
+  }
+
+  public onNumberClick(index: number) {
+    this.navigateQues.emit(index);
   }
 }

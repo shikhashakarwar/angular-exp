@@ -1,0 +1,28 @@
+.number-plate {
+    margin-top: 50px;
+
+    .question-block {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        text-align: center;
+        line-height: 55px;
+        background-color: #aaaaaa;
+        color: #ffffff;
+        margin: 0 5px 5px 0;
+        cursor: pointer;
+        
+        &.answered {
+            background-color: #228B21;
+        }
+        &.mark-reivew {
+            background-color: #32A8EB;
+        }
+        &.active {
+            background-color: #F9A51B;
+        }
+        &:nth-child(6n+0) {
+            margin-right: 0;
+        }
+    }
+}

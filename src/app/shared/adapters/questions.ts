@@ -1,6 +1,6 @@
-import { IQuestions, questionState } from "../../models/questions";
+import { IQuestions, questionState } from '../../models/questions';
 
-export class QuestionsAdapter implements IQuestions{
+export class QuestionsAdapter implements IQuestions {
     id: string;
     text: string;
     choices: object;
@@ -11,7 +11,7 @@ export class QuestionsAdapter implements IQuestions{
     state: string;
     customAnswer: string;
     questions: IQuestions[] = [];
-    
+
     constructor(data) {
         for (let i = 0; i < data.length; i++) {
             this.questions.push({
@@ -40,7 +40,7 @@ export class QuestionsAdapter implements IQuestions{
                 answers: data[i].user_answer,
                 customAnswer: (data[i].user_answer && data[i].user_answer.answer) ? (data[i].user_answer.answer) : '',
                 level: data[i].level,
-                state: (data[i].user_answer && data[i].user_answer.answer) ?  questionState.answered: questionState.unAnswered
+                state: (data[i].user_answer && data[i].user_answer.answer) ?  questionState.answered : questionState.unAnswered
             });
         }
     }

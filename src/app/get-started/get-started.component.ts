@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { qLocalForage } from "../services/quizStorage.service";
-import { Router } from "@angular/router";
+import { QuizLocalForage } from '../services/quizStorage.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-get-started',
   templateUrl: './get-started.component.html',
@@ -8,14 +8,14 @@ import { Router } from "@angular/router";
 })
 export class GetStartedComponent implements OnInit {
   submit: any;
-  
-  constructor(private localForage: qLocalForage, private router: Router) { }
+
+  constructor(private localForage: QuizLocalForage, private router: Router) { }
 
   ngOnInit() {
-      var _this = this;
-      _this.localForage.getItem('user').then(function (values:any) {
-        if(values && values.token) {
-          _this.router.navigate(['/dashboard']);
+      const _this = this;
+      _this.localForage.getItem('user').then(function (values: any) {
+        if (values && values.token) {
+          _this.router.navigateByUrl('dashboard');
         }
       });
   }

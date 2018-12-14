@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { registration } from "./registration";
-import { AuthService } from "../../services/auth.service";
-import {  Router } from "@angular/router";
+import { IRegistration } from './registration';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -9,10 +9,8 @@ import {  Router } from "@angular/router";
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
   submit: any;
-  
-  signUpUser: registration = {
+  signUpUser: IRegistration = {
     firstName: null,
     lastName: null,
     email: null,
@@ -20,23 +18,18 @@ export class RegistrationComponent implements OnInit {
   };
 
   showError: Boolean = false;
-  constructor(private AuthService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() { }
 
-  }
-  
   signUp() {
     this.showError = false;
-    this.AuthService.registerUser(this.signUpUser).subscribe((data) => {
-      console.log("sign up user success");
-      this.router.navigate['dashboard'];
+    this.authService.registerUser(this.signUpUser).subscribe((data) => {
+      this.router.navigateByUrl('dashboard');
     }, (error) => {
-      console.log("sign up user error");
-      if(error && error.status == '409') {
+      if (error && error.status === '409') {
         this.showError = true;
       }
-      console.log(error);
     });
   }
 }

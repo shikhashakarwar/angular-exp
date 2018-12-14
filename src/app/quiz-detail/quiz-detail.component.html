@@ -11,15 +11,15 @@
     <div class="row">
         <div class="col-8">
             <mat-tab-group (selectedTabChange)="onTabChange($event)" dynamicHeight>
-                <mat-tab *ngFor="let questions of questionsByCategory" label="{{questions.catName}}">
+                <mat-tab *ngFor="let questions of questionsByCategory" label="{{questions.catName}}" class="test">
                     <ng-template matTabContent>
-                        <question-section (saveAndNext)="onSaveAndNextClick($event)" [displayQuestion]="displayQuestion" (markReview)="onMarkReviewClick($event)"></question-section>
+                        <app-question-section   (submitQuiz)="onSubmitingQuiz($event)" (saveAndNext)="onSaveAndNextClick($event)" [displayQuestion]="displayQuestion" (markReview)="onMarkReviewClick($event)" (clearAnswer)="onClearClick($event)"></app-question-section>
                     </ng-template>
                 </mat-tab>
             </mat-tab-group>
         </div>
         <div class="col">
-          <number-plate [questionsByCategory]="someValue">></number-plate>  
+          <app-number-plate [questionsByCategory]="someValue" (navigateQues)="goToQuestion($event)" [displayQuestion]="displayQuestion"></app-number-plate>  
         </div>
     </div>
 </div>

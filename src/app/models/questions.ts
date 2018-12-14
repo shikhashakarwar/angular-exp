@@ -2,7 +2,7 @@ export enum questionState {
     answered = 'answered',
     unAnswered = 'unanswered',
     readLater = 'readLater'
-  };  
+}
 
 export interface IQuestions {
     id: string;

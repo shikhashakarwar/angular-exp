@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-info-popup',
@@ -8,13 +8,23 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 })
 export class InfoPopupComponent implements OnInit {
 
-  constructor( private dialogRef: MatDialogRef<InfoPopupComponent>, 
-              @Inject(MAT_DIALOG_DATA) public data: any ) { }
+  constructor( private dialogRef: MatDialogRef<InfoPopupComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any ) {}
 
   ngOnInit() {
+
   }
 
   onClose() {
+    this.dialogRef.close();
+    if (this.data.callback) {
+      console.log("xommifn");
+      
+      this.data.callback();
+    }
+  }
+
+  onCancel() {
     this.dialogRef.close();
   }
 }
